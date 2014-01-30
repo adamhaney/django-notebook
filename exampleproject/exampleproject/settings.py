@@ -84,5 +84,4 @@ STATIC_URL = '/static/'
 
 IPYTHON_ARGUMENTS = [
     '--pylab=inline',
-    '--notebook-dir=notebooks'
 ]
