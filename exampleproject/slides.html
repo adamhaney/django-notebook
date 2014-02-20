@@ -1,30 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/reveal.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/theme/simple.css" id="theme">
-
-<!-- For syntax highlighting -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/css/zenburn.css">
-
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-<script>
-document.write( '<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-</script>
-
-<!--[if lt IE 9]>
-<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/html5shiv.js"></script>
-<![endif]-->
-
+<meta charset="UTF-8">
+<title>[]</title>
 <style type="text/css">
     .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
@@ -1673,71 +1651,51 @@ h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anch
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-font-size: 20px;
-overflow-y: auto;
-overflow-x: hidden;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-width: 95%;
-padding: 0.4em;
-margin: 0px;
-font-family: monospace, sans-serif;
-font-size: 80%;
-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+.input_area {
+  padding: 0.2em;
 }
-.reveal section img {
-border: 0px solid black;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal .slides {
-text-align: left;
-}
-.reveal.fade {
-opacity: 1;
-}
-div.input_area {
-padding: 0.06em;
-}
-div.code_cell {
-background-color: transparent;
-}
-div.prompt {
-width: 11ex;
-padding: 0.4em;
-margin: 0px;
-font-family: monospace, sans-serif;
-font-size: 80%;
-text-align: right;
-}
-div.output_area pre {
-font-family: monospace, sans-serif;
-font-size: 80%;
-}
-div.output_prompt {
-    /* 5px right shift to account for margin in parent container */
-    margin: 5px 5px 0 0;
-}
-.rendered_html p {
-text-align: inherit;
+
+pre {
+    padding: 0.2em;
+    border: none;
+    margin: 0px;
+    font-size: 13px;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
+<script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
 </head>
-
 <body>
-<div class="reveal">
-<div class="slides">
-<section>
-    <section>
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="using-ipython-notebook-to-analyze-django-model-data">Using IPython Notebook to analyze Django Model data</h1>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="adam-haney">Adam Haney</h2>
 <ul>
@@ -1745,15 +1703,11 @@ text-align: inherit;
 <li>Have worked at a few startups as the chief nerd in some capacity</li>
 <li>I'm the guy that business teams ask questions</li>
 </ul>
-</div><div class="fragment">
-    
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Tweet-@adamhaney-for-questions-during-the-talk">Tweet <span class="citation">@adamhaney</span> for questions during the talk<a class="anchor-link" href="#Tweet-@adamhaney-for-questions-during-the-talk">&#182;</a></h3>
 </div>
 
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="the-problem-im-trying-to-solve">The problem I'm trying to solve</h1>
 <ul>
@@ -1761,26 +1715,18 @@ text-align: inherit;
 <li>They often need a few reports to be generated</li>
 <li>New projects need metrics to be successful but don't have time for 'real' Business Intelligence</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Who-Here-Has-used-IPython-Notebook?">Who Here Has used IPython Notebook?<a class="anchor-link" href="#Who-Here-Has-used-IPython-Notebook?">&#182;</a></h1>
 </div>
-</section>
-    </section><section>
-    <section>
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="an-introduction-to-ipython-notebook">An Introduction to IPython Notebook</h1>
-</div><div class="fragment">
-    
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>&quot;The IPython Notebook is a web-based interactive computational environment where you can combine code execution, text, mathematics, plots and rich media into a single document&quot;</p>
 <p>ipython.org/notebook</p>
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="notebooks-are-made-up-of-independent-cells">Notebooks are made up of independent &quot;cells&quot;</h1>
 <ul>
@@ -1788,14 +1734,11 @@ text-align: inherit;
 <li>Latex</li>
 <li>Python code, and its output</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="When-code-is-organized-in-cells-it-can-be-executed-sequentially-or-individually">When code is organized in cells it can be executed sequentially or individually<a class="anchor-link" href="#When-code-is-organized-in-cells-it-can-be-executed-sequentially-or-individually">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -1810,13 +1753,9 @@ In&nbsp;[2]:
 </div>
 
 </div>
-    </div><div class="fragment">
-    
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="you-can-see-the-results-of-executing-each-fragment-independently-this-allows-experimentation-and-iterative-development.">You can see the results of executing each fragment independently, this allows experimentation and iterative development.</h3>
 </div>
-    </div><div class="fragment">
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -1847,20 +1786,14 @@ In&nbsp;[3]:
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="IPython-also-provides-us-with-richer-media-objects-that-we-can-insert-programatically">IPython also provides us with richer media objects that we can insert programatically<a class="anchor-link" href="#IPython-also-provides-us-with-richer-media-objects-that-we-can-insert-programatically">&#182;</a></h2>
 </div>
-</section>
-    </section><section>
-    <section>
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Images">Images<a class="anchor-link" href="#Images">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3210,14 +3143,10 @@ o7/d0nEi6FAdNMbBDVVLrTs+kRdZZvSxq6a9D3TRp0n6bhX59PS7uP/Z
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Latex">Latex<a class="anchor-link" href="#Latex">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3259,25 +3188,19 @@ In&nbsp;[9]:
 </div>
 
 </div>
-    </div><aside class="notes">
-    
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Example borrowed from http://nbviewer.ipython.org/github/ipython/ipython/blob/master/examples/notebooks/Part%205%20-%20Rich%20Display%20System.ipynb#LaTeX</li>
 </ul>
 </div>
-    </aside></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Inline-HTML">Inline HTML<a class="anchor-link" href="#Inline-HTML">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[31]:
+In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -3298,7 +3221,7 @@ In&nbsp;[31]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[31]:</div>
+    Out[3]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 <div class="output_html rendered_html">
@@ -3317,93 +3240,10 @@ In&nbsp;[31]:
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="It-even-supports-CSS">It even supports CSS<a class="anchor-link" href="#It-even-supports-CSS">&#182;</a></h1>
-</div>
-<div class="fragment">
-    
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[32]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-
-<span class="n">HTML</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">&lt;style&gt;</span>
-<span class="s">.styled tr:first-child{</span>
-<span class="s">color:red;</span>
-<span class="s">}</span>
-
-<span class="s">.styled tr:nth-child(2){</span>
-<span class="s">color:green;</span>
-<span class="s">}</span>
-
-<span class="s">.styled tr:nth-child(3){</span>
-<span class="s">color:blue;</span>
-<span class="s">}</span>
-<span class="s">&lt;/style&gt;</span>
-
-<span class="s">&lt;table class=&#39;styled&#39;&gt;</span>
-<span class="s">&lt;tr&gt;&lt;td&gt;Cell A1&lt;/td&gt;&lt;td&gt;Cell B1&lt;/td&gt;&lt;td&gt;Cell C1&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="s">&lt;tr&gt;&lt;td&gt;Cell A2&lt;/td&gt;&lt;td&gt;Cell B2&lt;/td&gt;&lt;td&gt;Cell C2&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="s">&lt;tr&gt;&lt;td&gt;Cell A3&lt;/td&gt;&lt;td&gt;Cell B3&lt;/td&gt;&lt;td&gt;Cell C3&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="s">&lt;/table&gt;&quot;&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[32]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-<div class="output_html rendered_html">
-
-<style>
-.styled tr:first-child{
-color:red;
-}
-
-.styled tr:nth-child(2){
-color:green;
-}
-
-.styled tr:nth-child(3){
-color:blue;
-}
-</style>
-
-<table class='styled'>
-<tr><td>Cell A1</td><td>Cell B1</td><td>Cell C1</td></tr>
-<tr><td>Cell A2</td><td>Cell B2</td><td>Cell C2</td></tr>
-<tr><td>Cell A3</td><td>Cell B3</td><td>Cell C3</td></tr>
-</table>
-</div>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Youtube-Videos">Youtube Videos<a class="anchor-link" href="#Youtube-Videos">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3445,17 +3285,13 @@ In&nbsp;[13]:
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="running-shell-commands">Running shell commands</h1>
 <ul>
 <li>Ipython Notebooks have all of the power of Ipython</li>
 <li>In Ipython the '!' operator causes a line to be executed as a shell command</li>
 </ul>
-</div><div class="fragment">
-    
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3485,8 +3321,6 @@ bill_fail.jpg      db.sqlite3         <span class="ansiblue">exampleproject</spa
 </div>
 
 </div>
-    </div><div class="fragment">
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3520,92 +3354,9 @@ In&nbsp;[3]:
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="(Brief-Aside)-If-you-need-to-create-really-complicated-shell-interactions-you-can-use-the-'sh'-module">(Brief Aside) If you need to create really complicated shell interactions you can use the 'sh' module<a class="anchor-link" href="#(Brief-Aside)-If-you-need-to-create-really-complicated-shell-interactions-you-can-use-the-'sh'-module">&#182;</a></h1>
-</div>
-<div class="fragment">
-    
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[8]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">!</span>pip install sh
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-Requirement already satisfied (use --upgrade to upgrade): sh in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages
-Cleaning up...
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sh</span> <span class="kn">import</span> <span class="n">ls</span><span class="p">,</span> <span class="n">pwd</span>
-<span class="k">print</span> <span class="n">pwd</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">ls</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-/home/vagrant/bellhops/campusbellhops
-
-accounting	coupons		 __init__.py   reviews		 urls.py
-accounts	craigslist	 __init__.pyc  serviceproviders  urls.pyc
-admin		db.sqlite	 jobs	       shared		 www
-advocate	Example.ipynb	 lib	       slides.ipynb	 zendesk
-campusbellhops	ghostdriver.log  manage.py     static
-communications	hophr		 reservations  training
-
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="now-using-it-with-django">Now Using it with Django</h1>
-</div><div class="fragment">
-    
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3637,19 +3388,13 @@ Cleaning up...
 </div>
 
 </div>
-    </div><div class="fragment">
-    
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="in-settings.py">In settings.py</h1>
 <p>INSTALLED_APPS += ('django_extensions')</p>
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="as-a-replacement-for-manage.py-shell">As a replacement for manage.py shell</h1>
-</div><div class="fragment">
-    
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3692,14 +3437,10 @@ Shutdown this notebook server (y/[n])? resuming operation...
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Playing-around-with-some-simple-user-data">Playing around with some simple user data<a class="anchor-link" href="#Playing-around-with-some-simple-user-data">&#182;</a></h2>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3713,8 +3454,6 @@ In&nbsp;[2]:
 </div>
 
 </div>
-    </div><div class="fragment">
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3748,14 +3487,10 @@ In&nbsp;[3]:
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="You-get-the-full-power-of-the-ORM-with-the-organization-of-a-notebook">You get the full power of the ORM with the organization of a notebook<a class="anchor-link" href="#You-get-the-full-power-of-the-ORM-with-the-organization-of-a-notebook">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
+
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3769,8 +3504,6 @@ In&nbsp;[7]:
 </div>
 
 </div>
-    </div><div class="fragment">
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3813,14 +3546,9 @@ DEBUG:django.db.backends:(0.088) SELECT COUNT(*) FROM &quot;auth_user&quot; WHER
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="simple-data-visualization">Simple Data Visualization</h1>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="data-visualization-configuration">Data Visualization Configuration</h1>
 <ul>
@@ -3828,47 +3556,7 @@ DEBUG:django.db.backends:(0.088) SELECT COUNT(*) FROM &quot;auth_user&quot; WHER
 <li>pip install matplotlib</li>
 <li>IPYTHON_ARGUMENTS += ['--pylab=inline'] in settings.py</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[33]:
 </div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c">#!sudo apt-get install libpng-dev</span>
-<span class="o">!</span>pip install matplotlib | tail
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-Requirement already satisfied (use --upgrade to upgrade): matplotlib in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages
-Requirement already satisfied (use --upgrade to upgrade): numpy&gt;=1.5 in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages (from matplotlib)
-Requirement already satisfied (use --upgrade to upgrade): python-dateutil in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages (from matplotlib)
-Requirement already satisfied (use --upgrade to upgrade): tornado in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages (from matplotlib)
-Requirement already satisfied (use --upgrade to upgrade): pyparsing&gt;=1.5.6,!=2.0.0 in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages (from matplotlib)
-Requirement already satisfied (use --upgrade to upgrade): nose in /home/vagrant/.envs/bellhops/lib/python2.7/site-packages (from matplotlib)
-Cleaning up...
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -4116,17 +3804,14 @@ olAXERlAFOoiIgOIQl1EZABRqIuIDCD/HxJt4HnCqNxWAAAAAElFTkSuQmCC
 </div>
 </div>
 
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="plotting-user-registration">Plotting User Registration</h1>
-</div><div class="fragment">
-    
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[13]:
+In&nbsp;[23]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">Count</span>
@@ -4148,10 +3833,32 @@ In&nbsp;[13]:
 </div>
 </div>
 
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stderr">
+<pre>
+DEBUG:django.db.backends:(0.002) SELECT (date( date_joined )) AS &quot;day&quot;, COUNT(&quot;auth_user&quot;.&quot;date_joined&quot;) AS &quot;joined_count&quot; FROM &quot;auth_user&quot; GROUP BY date( date_joined ), (date( date_joined )) ORDER BY &quot;day&quot; ASC LIMIT 1; args=()
+
+</pre>
 </div>
-    </div></section>
-    </section><section>
-    <section>
+</div>
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+{&apos;day&apos;: datetime.date(2013, 2, 3), &apos;joined_count&apos;: 1}
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -4385,556 +4092,20 @@ XOhERGRSui50IiIi/TDgiYhMigFPRGRSDHgiIpNiwBMRmRQDnojIpBjwREQmxYAnIjKp/wcHuqd7
 </div>
 </div>
 
-</div></section>
-    </section><section>
-    <section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Matplot-lib-is-capable-of-some-very-cool-visualizations">Matplot lib is capable of some very cool visualizations<a class="anchor-link" href="#Matplot-lib-is-capable-of-some-very-cool-visualizations">&#182;</a></h1>
 </div>
-<div class="fragment">
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[30]:
+In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">%</span><span class="k">pylab</span> <span class="n">inline</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
-
-<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">xx</span> <span class="o">+</span> <span class="mf">0.25</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xx</span><span class="p">)))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;scatter&quot;</span><span class="p">)</span>
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;step&quot;</span><span class="p">)</span>
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;fill_between&quot;</span><span class="p">)</span>
+<div class="highlight"><pre>
 </pre></div>
 
 </div>
 </div>
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-Populating the interactive namespace from numpy and matplotlib
-
-</pre>
 </div>
-</div>
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stderr">
-<pre>
-WARNING: pylab import has clobbered these variables: [&apos;axes&apos;]
-&#96;%pylab --no-import-all&#96; prevents importing * from pylab and numpy
-
-</pre>
-</div>
-</div>
-
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[30]:</div>
-<div class="box-flex1 output_subarea output_pyout">
-
-
-<pre>
-&lt;matplotlib.text.Text at 0x617f150&gt;
-</pre>
-
-</div>
-</div>
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<img src="data:image/png;base64,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
-CCHERf4/xZh+TCwleYAAAAAASUVORK5CYII=
-">
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="using-pandas-to-answer-more-complicated-questions">Using Pandas to answer more complicated questions</h1>
 <ul>
@@ -4942,28 +4113,21 @@ CCHERf4/xZh+TCwleYAAAAAASUVORK5CYII=
 <li>Can be used to bucket tabular data</li>
 <li>Has support for data alignment and missing data</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="more-information-about-pandas">More Information about Pandas</h1>
 <ul>
 <li>http://pandas.pydata.org/</li>
 <li>&quot;Python for Data Analysis&quot;</li>
 </ul>
-</div><div style=display:none>
-    
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="using-vega-vincent-to-visualize-geospatial-data">Using Vega / Vincent to visualize geospatial data</h1>
 </div>
-    </div><div style=display:none>
-    
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="model-magics">Model Magics</h1>
 <p>https://github.com/mgaitan/django-orm-magic</p>
 </div>
-    </div><div style=display:none>
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -4996,8 +4160,6 @@ Cleaning up...
 </div>
 
 </div>
-    </div><div style=display:none>
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -5011,8 +4173,6 @@ In&nbsp;[9]:
 </div>
 
 </div>
-    </div><div style=display:none>
-    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -5052,13 +4212,9 @@ ERROR: Cell magic &#96;%%django_orm&#96; not found.
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="running-notebooks-from-command-line">Running Notebooks from Command Line</h1>
-</div><div class="fragment">
-    
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -5094,9 +4250,6 @@ Cleaning up...
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -5153,17 +4306,14 @@ print computed_small_part_of_problem
 </div>
 </div>
 
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="exporting-slides">Exporting Slides</h1>
 <ul>
 <li>pygments</li>
 <li>pandoc (http://johnmacfarlane.net/pandoc/installing.html, not pip installable)</li>
 </ul>
-</div><div class="fragment">
-    
+</div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -5204,59 +4354,44 @@ Use Control-C to stop this server.
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="How-I've-used-IPython-Notebooks-for-projects">How I've used IPython Notebooks for projects<a class="anchor-link" href="#How-I've-used-IPython-Notebooks-for-projects">&#182;</a></h1>
 </div>
-</section>
-    </section><section>
-    <section>
+
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="exploratory">Exploratory</h1>
 <ul>
 <li>Notebooks can be saved easily so when I'm doing exploratory work I crack open a notebook instead of a shell or text editor</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="semi-frequent-questions">Semi-frequent Questions</h1>
 <ul>
 <li>Notebooks can hold onto logic that doesn't need to be in the app but that creates business value</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="data-interfaces-for-very-trusted-users">Data Interfaces for Very Trusted Users</h1>
 <ul>
 <li>I can give a notebook to a member of the marketing team with some examples and they can answer their own questions</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="a-setup-ive-used-for-remote-access">A setup I've used for remote access</h1>
 <ul>
-<li>IPYTHON_ARGUMENTS += ['--ip=&quot;*&quot;']</li>
+<li>IPYTHON_ARGUMENTS += ['ip=&quot;*&quot;']</li>
 <li>run <code>python manage.py shell_plus --notebook</code> under supervisord</li>
 <li>Run nginx in front of this with LDAP/PAM authorization</li>
 <li>Have deployment process push new code to the directory where notebook is running and restart the process so you can access new models</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="caveats">Caveats</h1>
+<h1 id="caveots">Caveots</h1>
 <ul>
 <li>Don't do analysis on production data, use a read slave instead</li>
 <li>This has the full power of python, don't give to anyone you don't trust</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="ipython-roadmap">IPython Roadmap</h1>
 <h2 id="major-sponsorship">Major Sponsorship</h2>
@@ -5264,19 +4399,13 @@ Use Control-C to stop this server.
 <li>In the summer of 2013, Microsoft made a $100,000 donation to support all aspects of the IPython project.</li>
 <li>In December 2012, IPython was awarded a$1.15 million grant from the Alfred P. Sloan Foundation that will fund the core team for the 2013-2014 period.</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="upcoming-features">Upcoming Features</h2>
 <ul>
 <li>Plans for better multi user environment</li>
 <li>Plans for javascript plugins that can talk with IPython notebook on the backend</li>
 <li>Plans to further integrate Ipython notebook kernels that run in other languages</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="how-to-reach-out-to-me">How to reach out to me</h1>
 <ul>
@@ -5284,9 +4413,7 @@ Use Control-C to stop this server.
 <li><span class="citation">@adamhaney</span></li>
 <li>strayentrepreneur.com, if you'd like to read more about the things I work on.</li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="bellhops-is-hiring">Bellhops is Hiring</h1>
 <ul>
@@ -5299,93 +4426,10 @@ Use Control-C to stop this server.
 <li>careers@waypaver.co</li>
 <li><span class="citation">@adamhaney</span></li>
 </ul>
-</div></section>
-    </section><section>
-    <section>
+</div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Any-Questions?">Any Questions?<a class="anchor-link" href="#Any-Questions?">&#182;</a></h1>
 </div>
-</section>
-    </section>
-</div>
-</div>
-
-<!--
-Uncomment the following block and the addthis_widget.js (see below inside dependencies)
-to get enable social buttons.
--->
-
-<!--
-<div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="left:20px;top:20px;">
-<a class="addthis_button_twitter"></a>
-<a class="addthis_button_google_plusone_share"></a>
-<a class="addthis_button_linkedin"></a>
-<a class="addthis_button_facebook"></a>
-<a class="addthis_button_more"></a>
-</div>
--->
-
-<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/head.min.js"></script>
-
-<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/js/reveal.js"></script>
-
-<script>
-
-// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/classList.js", condition: function() { return !document.body.classList; } },
-{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'http://s7.addthis.com/js/300/addthis_widget.js', async: true},
-]
-});
-</script>
-
-<!-- MathJax configuration -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-    },
-    displayAlign: 'left', // Change this to 'center' to center equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script>
-<!-- End of mathjax configuration -->
-
-<script>
-//  We wait for the onload function to load MathJax after the page is completely loaded.
-//  MathJax is loaded 1 unit of time after the page is ready.
-//  This hack prevent problems when you load multiple js files (i.e. social button from addthis).
-//
-window.onload = function () {
-  setTimeout(function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  },1)
-}
-</script>
-
-<script>
-Reveal.addEventListener( 'slidechanged', function( event ) {
-MathJax.Hub.Rerender(event.currentSlide);
-});
-</script>
 
 </body>
-
 </html>
