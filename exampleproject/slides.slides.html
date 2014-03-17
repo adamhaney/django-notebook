@@ -1740,8 +1740,28 @@ text-align: inherit;
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="adam-haney">Adam Haney</h2>
+<div class="figure">
+<img src="https://s3.amazonaws.com/bellhops/img/Adam+pic.jpg" />
+</div>
 <ul>
 <li>Chief Technology Officer, Bellhops</li>
+</ul>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="bellhops">Bellhops</h1>
+<ul>
+<li>Network of college students in 115 cities who help with local moves</li>
+<li>Hundreds of moves nationwide somedays</li>
+<li>Entirely written in Django :)</li>
+</ul>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="before-that">Before That</h1>
+<ul>
 <li>Have worked at a few startups as the chief nerd in some capacity</li>
 <li>I'm the guy that business teams ask questions</li>
 </ul>
@@ -1779,6 +1799,12 @@ text-align: inherit;
 <p>ipython.org/notebook</p>
 </div>
     </div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="IPython-notebooks-are-google-docs-that-can-execute-python">IPython notebooks are google docs that can execute python<a class="anchor-link" href="#IPython-notebooks-are-google-docs-that-can-execute-python">&#182;</a></h1>
+</div>
+</section>
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -3816,6 +3842,58 @@ DEBUG:django.db.backends:(0.088) SELECT COUNT(*) FROM &quot;auth_user&quot; WHER
     </div></section>
     </section><section>
     <section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[4]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">jobs.models</span> <span class="kn">import</span> <span class="n">Job</span>
+
+<span class="k">print</span> <span class="n">Job</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">bellhops__user__first_name</span><span class="o">=</span><span class="s">&#39;Matt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="n">Job</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">bellhops__user__first_name</span><span class="o">=</span><span class="s">&#39;John&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stderr">
+<pre>
+DEBUG:django.db.backends:(0.003) SELECT COUNT(*) FROM &quot;jobs_job&quot; INNER JOIN &quot;jobs_assignedbellhop&quot; ON ( &quot;jobs_job&quot;.&quot;id&quot; = &quot;jobs_assignedbellhop&quot;.&quot;job_id&quot; ) INNER JOIN &quot;hophr_bellhopprofile&quot; ON ( &quot;jobs_assignedbellhop&quot;.&quot;bellhop_id&quot; = &quot;hophr_bellhopprofile&quot;.&quot;id&quot; ) INNER JOIN &quot;auth_user&quot; ON ( &quot;hophr_bellhopprofile&quot;.&quot;user_id&quot; = &quot;auth_user&quot;.&quot;id&quot; ) WHERE &quot;auth_user&quot;.&quot;first_name&quot; = &apos;Matt&apos; ; args=(&apos;Matt&apos;,)
+DEBUG:django.db.backends:(0.003) SELECT COUNT(*) FROM &quot;jobs_job&quot; INNER JOIN &quot;jobs_assignedbellhop&quot; ON ( &quot;jobs_job&quot;.&quot;id&quot; = &quot;jobs_assignedbellhop&quot;.&quot;job_id&quot; ) INNER JOIN &quot;hophr_bellhopprofile&quot; ON ( &quot;jobs_assignedbellhop&quot;.&quot;bellhop_id&quot; = &quot;hophr_bellhopprofile&quot;.&quot;id&quot; ) INNER JOIN &quot;auth_user&quot; ON ( &quot;hophr_bellhopprofile&quot;.&quot;user_id&quot; = &quot;auth_user&quot;.&quot;id&quot; ) WHERE &quot;auth_user&quot;.&quot;first_name&quot; = &apos;John&apos; ; args=(&apos;John&apos;,)
+
+</pre>
+</div>
+</div>
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+40
+52
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="No-one-knows-your-business-domain-as-well-as-you-do.">No one knows your business domain as well as you do.<a class="anchor-link" href="#No-one-knows-your-business-domain-as-well-as-you-do.">&#182;</a></h1>
+</div>
+</section>
+    </section><section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="simple-data-visualization">Simple Data Visualization</h1>
 </div></section>
@@ -5056,13 +5134,19 @@ ERROR: Cell magic &#96;%%django_orm&#96; not found.
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Exporting-Notebooks">Exporting Notebooks<a class="anchor-link" href="#Exporting-Notebooks">&#182;</a></h1>
+</div>
+</section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="running-notebooks-from-command-line">Running Notebooks from Command Line</h1>
 </div><div class="fragment">
     
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[*]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">!</span>pip install runipy
@@ -5078,13 +5162,7 @@ In&nbsp;[1]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-Requirement already satisfied (use --upgrade to upgrade): runipy in /Users/adamhaney/Repos/personal/talks/django-notebook/venv/lib/python2.7/site-packages
-Requirement already satisfied (use --upgrade to upgrade): Jinja2 in /Users/adamhaney/Repos/personal/talks/django-notebook/venv/lib/python2.7/site-packages (from runipy)
-Requirement already satisfied (use --upgrade to upgrade): Pygments in /Users/adamhaney/Repos/personal/talks/django-notebook/venv/lib/python2.7/site-packages (from runipy)
-Requirement already satisfied (use --upgrade to upgrade): ipython in /Users/adamhaney/Repos/personal/talks/django-notebook/venv/lib/python2.7/site-packages (from runipy)
-Requirement already satisfied (use --upgrade to upgrade): pyzmq in /Users/adamhaney/Repos/personal/talks/django-notebook/venv/lib/python2.7/site-packages (from runipy)
-Requirement already satisfied (use --upgrade to upgrade): markupsafe in /Users/adamhaney/Repos/personal/talks/django-notebook/venv/lib/python2.7/site-packages (from Jinja2-&gt;runipy)
-Cleaning up...
+Downloading/unpacking runipy
 
 </pre>
 </div>
@@ -5100,10 +5178,10 @@ Cleaning up...
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">!</span>runipy slides.ipynb
+<div class="highlight"><pre><span class="o">!</span>runipy slides.ipynb | tail
 </pre></div>
 
 </div>
@@ -5116,35 +5194,7 @@ In&nbsp;[4]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-11/30/2013 02:05:39 AM Reading notebook slides.ipynb
-11/30/2013 02:05:39 AM Running cell:
-from IPython.display import Image
-
-Image(&apos;bill_fail.jpg&apos;)
-
-11/30/2013 02:05:40 AM Cell returned
-11/30/2013 02:05:40 AM Running cell:
-def small_part_of_problem(x, y):
-    return x + y
-
-11/30/2013 02:05:40 AM Cell returned
-11/30/2013 02:05:40 AM Running cell:
-computed_small_part_of_problem = small_part_of_problem(2, 2)
-print computed_small_part_of_problem
-
-11/30/2013 02:05:40 AM Cell returned
-11/30/2013 02:05:40 AM Running cell:
-!pip install django_extensions
-
-11/30/2013 02:05:40 AM Cell returned
-11/30/2013 02:05:40 AM Running cell:
-2 + 2
-
-11/30/2013 02:05:40 AM Cell returned
-11/30/2013 02:05:40 AM Running cell:
-
-
-11/30/2013 02:05:40 AM Cell returned
+/bin/sh: 1: runipy: not found
 
 </pre>
 </div>
@@ -5167,38 +5217,11 @@ print computed_small_part_of_problem
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[*]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">!</span>ipython nbconvert slides.ipynb --to slides --post serve
 </pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-[NbConvertApp] Using existing profile dir: u&apos;/Users/adamhaney/.ipython/profile_default&apos;
-[NbConvertApp] Converting notebook slides.ipynb to slides
-[NbConvertApp] Support files will be in slides_files/
-[NbConvertApp] Loaded template slides_reveal.tpl
-[NbConvertApp] Writing 439295 bytes to slides.slides.html
-Serving your slides on http://127.0.0.1:8000/slides.slides.html
-Use Control-C to stop this server.
-127.0.0.1 - - [09/Feb/2014 02:08:02] &quot;GET /slides.slides.html HTTP/1.1&quot; 200 -
-127.0.0.1 - - [09/Feb/2014 02:08:02] code 404, message File not found
-127.0.0.1 - - [09/Feb/2014 02:08:02] &quot;GET /custom.css HTTP/1.1&quot; 404 -
-127.0.0.1 - - [09/Feb/2014 02:08:03] code 404, message File not found
-127.0.0.1 - - [09/Feb/2014 02:08:03] &quot;GET /favicon.ico HTTP/1.1&quot; 404 -
-
-</pre>
-</div>
-</div>
 
 </div>
 </div>
@@ -5222,6 +5245,12 @@ Use Control-C to stop this server.
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="IPython-Notebooks-are-postits-for-Python-and-Django-Developers">IPython Notebooks are postits for Python and Django Developers<a class="anchor-link" href="#IPython-Notebooks-are-postits-for-Python-and-Django-Developers">&#182;</a></h1>
+</div>
+</section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="semi-frequent-questions">Semi-frequent Questions</h1>
 <ul>
 <li>Notebooks can hold onto logic that doesn't need to be in the app but that creates business value</li>
@@ -5233,6 +5262,18 @@ Use Control-C to stop this server.
 <h1 id="data-interfaces-for-very-trusted-users">Data Interfaces for Very Trusted Users</h1>
 <ul>
 <li>I can give a notebook to a member of the marketing team with some examples and they can answer their own questions</li>
+</ul>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="tripp">Tripp</h1>
+<div class="figure">
+<img src="https://s3.amazonaws.com/bellhops/img/Tripp+pic.jpg" />
+</div>
+<ul>
+<li>Interested in python but not a developer</li>
+<li>Needs questions answered about marketing traction</li>
 </ul>
 </div></section>
     </section><section>
